@@ -72,7 +72,8 @@ const logs = {
     logHeaderText : {
         color: colors.white,
         fontSize: 20,
-        padding: 10
+        padding: 10,
+        marginBottom: 6
     },
     logCard : {
         display: 'flex',

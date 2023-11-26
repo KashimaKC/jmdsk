@@ -17,7 +17,6 @@ const Logs:FC<RefreshProps> = ( { refreshExternal } ) => {
         const retrieveRecords = async () => {
             let logs: string = await invoke('retrieve_logs')
             let json = JSON.parse(logs)
-            console.log(json)
             setData(json)
         }
 
@@ -26,9 +25,10 @@ const Logs:FC<RefreshProps> = ( { refreshExternal } ) => {
 
     return (
         <div style={logs.logsContainer as React.CSSProperties}>
-            <div style={{minHeight: 800, maxHeight: 800, overflowY: 'scroll'}}>
+            <div style={logs.logHeaderText}>View Journal Entries</div>
+            <div style={{minHeight: 750, maxHeight: 750, overflowY: 'scroll'}}>
                 {
-                    data?.map((item: any, i: any) => (
+                    data?.toReversed().map((item: any, i: any) => (
                         <div key={i} style={logs.logCard as React.CSSProperties}>
                             <div>{item.date} - {item.time}</div>
                             <div 
