@@ -60,11 +60,11 @@ fn test_db_log() -> Result<String, String> {
 }
 
 #[tauri::command]
-fn submit_log(journal: String) -> Result<String, String> {
+fn submit_log(journal: String, date: String, time: String) -> Result<String, String> {
   let conn = initialize_db_connection();
 
   let col = conn.unwrap();
-  let insert_res = col.insert_one(doc! {"entry": journal}, None);
+  let insert_res = col.insert_one(doc! {"date": date, "time": time, "entry": journal}, None);
 
   match insert_res {
     Ok(_) => {

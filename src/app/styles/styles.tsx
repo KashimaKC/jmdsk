@@ -73,6 +73,14 @@ const logs = {
         color: colors.white,
         fontSize: 20,
         padding: 10
+    },
+    logCard : {
+        display: 'flex',
+        backgroundColor: colors.cerulean,
+        padding: 20,
+        margin: 10,
+        flexDirection: 'column',
+        borderRadius: 5
     }
 }
 

@@ -1,12 +1,17 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, FC, Ref } from "react"
 import { logs } from "../styles/styles"
 import { invoke } from "@tauri-apps/api/tauri"
+import { Button } from "@mui/material"
 
+interface RefreshProps {
+    refreshExternal: boolean;
+}
 
 // contains the component where existing log entries are displayed.
-const Logs = () => {
+const Logs:FC<RefreshProps> = ( { refreshExternal } ) => {
 
     const [data, setData] = useState<Object | any >([]);
+    const [refresh, setRefresh] = useState<boolean>(false)
 
     useEffect(() => {
         const retrieveRecords = async () => {
@@ -17,15 +22,33 @@ const Logs = () => {
         }
 
         retrieveRecords()
-    }, [])
+    }, [refresh, refreshExternal])
 
     return (
         <div style={logs.logsContainer as React.CSSProperties}>
-            {
-                data?.map((item: any, i: any) => (
-                    <div key={i}>{item.entry}</div>
-                ))
-            }
+            <div style={{minHeight: 800, maxHeight: 800, overflowY: 'scroll'}}>
+                {
+                    data?.map((item: any, i: any) => (
+                        <div key={i} style={logs.logCard as React.CSSProperties}>
+                            <div>{item.date} - {item.time}</div>
+                            <div 
+                                style={{
+                                    overflow: 'hidden', 
+                                    textOverflow: 'ellipsis', 
+                                    whiteSpace: 'nowrap'
+                                }}>
+                                    {item.entry}
+                                </div>
+                        </div>
+                    ))
+                }
+            </div>
+            <Button
+                variant="contained"
+                onClick={() => setRefresh(!refresh)}
+            >
+                Refresh
+            </Button>
         </div>
     )
 }

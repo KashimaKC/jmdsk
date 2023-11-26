@@ -1,15 +1,33 @@
 import { journal } from "../styles/styles"
 import { TextField, Button } from "@mui/material"
 import { invoke } from "@tauri-apps/api/tauri";
-import { useState } from "react"
+import { useState, FC } from "react"
 
-const Journal = () => {
+interface RefreshProps {
+    refreshLogs: boolean;
+    setRefreshLogs: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Journal:FC<RefreshProps> = ( {setRefreshLogs, refreshLogs} ) => {
 
     const [text, setText] = useState<string>('');
 
     const submitJournal = async () => {
-        let response = await invoke('submit_log', {"journal": text})
-        console.log(response)
+        let date = new Date()
+        let response = await invoke('submit_log', 
+            {
+                "journal": text, 
+                "date": date.toLocaleDateString(),
+                "time": date.toLocaleTimeString()
+            }
+        )
+        if (response === 'success') {
+            alert("log successful!")
+            setText('')
+            setRefreshLogs(!refreshLogs)
+        } else {
+            alert("failed to log response, please try again.")
+        }
     }
 
     return (
