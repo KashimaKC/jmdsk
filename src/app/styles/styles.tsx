@@ -59,7 +59,8 @@ const header = {
         display: 'flex',
         width: 300,
         height: 421,
-        backgroundColor: colors.cerulean
+        backgroundColor: colors.cerulean,
+        flexDirection: 'column'
     }
 }
 

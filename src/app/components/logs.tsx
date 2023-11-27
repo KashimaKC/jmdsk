@@ -2,6 +2,7 @@ import { useEffect, useState, FC, Ref } from "react"
 import { logs } from "../styles/styles"
 import { invoke } from "@tauri-apps/api/tauri"
 import { Button } from "@mui/material"
+import styles from "../styles/scroll.module.css"
 
 interface RefreshProps {
     refreshExternal: boolean;
@@ -26,7 +27,7 @@ const Logs:FC<RefreshProps> = ( { refreshExternal } ) => {
     return (
         <div style={logs.logsContainer as React.CSSProperties}>
             <div style={logs.logHeaderText}>View Journal Entries</div>
-            <div style={{minHeight: 750, maxHeight: 750, overflowY: 'scroll'}}>
+            <div className={styles.scroll} style={{minHeight: 750, maxHeight: 750, overflowY: 'scroll'}}>
                 {   data !== undefined ?
                     data?.toReversed().map((item: any, i: any) => (
                         <div key={i} style={logs.logCard as React.CSSProperties}>

@@ -40,8 +40,8 @@ const Header = () => {
                         onClick={randomImage}
                     >Refresh Card</Button>
                 </div>
-                <div style={header.pageNavContainer}>
-                    buttons here
+                <div style={header.pageNavContainer as React.CSSProperties}>
+                    <Button variant="contained">Weather</Button>
                 </div>
             </div>
         </div>
