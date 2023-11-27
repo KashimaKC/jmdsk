@@ -29,15 +29,20 @@ const Header = () => {
             <div style={header.headerText}>Welcome to your dashboard, Joshua.</div>
             <div style={header.navContainer as React.CSSProperties}>
             </div>
-            <div style={header.clockContainer}>
+            <div style={header.clockContainer as React.CSSProperties}>
                 <Clock />
             </div>
-            <div style={header.imageContainer as React.CSSProperties}>
-                <Image src={`data:image/png;base64, ${image}`} alt="" width="300" height="421"/>
-                <Button
-                    variant="contained"
-                    onClick={randomImage}
-                >Refresh Card</Button>
+            <div style={{display: 'flex', justifyContent: 'space-around'}}>
+                <div style={header.imageContainer as React.CSSProperties}>
+                    <Image src={`data:image/png;base64, ${image}`} alt="" width="300" height="421"/>
+                    <Button
+                        variant="contained"
+                        onClick={randomImage}
+                    >Refresh Card</Button>
+                </div>
+                <div style={header.pageNavContainer}>
+                    buttons here
+                </div>
             </div>
         </div>
     )

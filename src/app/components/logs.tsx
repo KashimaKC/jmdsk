@@ -10,7 +10,7 @@ interface RefreshProps {
 // contains the component where existing log entries are displayed.
 const Logs:FC<RefreshProps> = ( { refreshExternal } ) => {
 
-    const [data, setData] = useState<Object | any >([]);
+    const [data, setData] = useState<any>();
     const [refresh, setRefresh] = useState<boolean>(false)
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const Logs:FC<RefreshProps> = ( { refreshExternal } ) => {
         <div style={logs.logsContainer as React.CSSProperties}>
             <div style={logs.logHeaderText}>View Journal Entries</div>
             <div style={{minHeight: 750, maxHeight: 750, overflowY: 'scroll'}}>
-                {
+                {   data !== undefined ?
                     data?.toReversed().map((item: any, i: any) => (
                         <div key={i} style={logs.logCard as React.CSSProperties}>
                             <div>{item.date} - {item.time}</div>
@@ -40,7 +40,9 @@ const Logs:FC<RefreshProps> = ( { refreshExternal } ) => {
                                     {item.entry}
                                 </div>
                         </div>
-                    ))
+                    )) 
+                    : 
+                    <div>Loading</div>
                 }
             </div>
             <Button

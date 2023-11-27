@@ -4,7 +4,8 @@ const globals = {
     global : {
         backgroundColor: colors.oxford_blue,
         minHeight: '100vh',
-        display: 'flex'
+        display: 'flex',
+        justifyContent: 'space-between'
     }
 }
 
@@ -12,8 +13,8 @@ const header = {
     headerContainer : {
         display: 'flex',
         backgroundColor: colors.indigo_dye,
-        width: '30vw',
-        margin: 20,
+        width: '40vw',
+        margin: 10,
         padding: 10,
         borderRadius: 5,
         flexDirection: 'column'
@@ -26,7 +27,7 @@ const header = {
     navContainer : {
         display: 'flex',
         flexDirection: 'column',
-        marginTop: 50
+        marginTop: 10
     },
     imageContainer : {
         display: 'flex',
@@ -38,7 +39,27 @@ const header = {
         alignSelf: 'center',
         fontSize: 24,
         margin: 20,
-        color: colors.white
+        color: colors.white,
+        flexDirection: 'column'
+    },
+    weatherContainer : {
+        display: 'flex',
+        alignSelf: 'center',
+        color: colors.white,
+        flexDirection: 'column',
+        marginBottom: 10,
+    },
+    weatherCell : {
+        fontSize: 12,
+        margin: 15,
+        padding: 13,
+        textAlign: 'center'
+    },
+    pageNavContainer : {
+        display: 'flex',
+        width: 300,
+        height: 421,
+        backgroundColor: colors.cerulean
     }
 }
 
@@ -47,7 +68,7 @@ const journal = {
         display: 'flex',
         backgroundColor: colors.penn_blue,
         width: '30vw',
-        margin: 20,
+        margin: 10,
         padding: 10,
         borderRadius: 5,
         flexDirection: 'column'
@@ -63,8 +84,8 @@ const logs = {
     logsContainer : {
         display: 'flex',
         backgroundColor: colors.indigo_dye,
-        width: '30vw',
-        margin: 20,
+        width: '25vw',
+        margin: 10,
         padding: 10,
         borderRadius: 5,
         flexDirection: 'column'
