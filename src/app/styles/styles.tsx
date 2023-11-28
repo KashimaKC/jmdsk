@@ -17,7 +17,9 @@ const header = {
         margin: 10,
         padding: 10,
         borderRadius: 5,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        minWidth: '40vw',
+        maxWidth: '40vw'
     },
     headerText : {
         color: colors.white,
@@ -121,4 +123,19 @@ const currentWeatherStyles = {
     }
 }
 
-export { header, globals, journal, logs, currentWeatherStyles }
+const weatherPage = {
+    weatherPageContainer : {
+        display: 'flex',
+        backgroundColor: colors.indigo_dye,
+        width: '55vw',
+        margin: 10,
+        padding: 10,
+        borderRadius: 5,
+        flexDirection: 'column'
+    }
+}
+
+export { 
+    header, globals, journal, 
+    logs, currentWeatherStyles, weatherPage 
+}

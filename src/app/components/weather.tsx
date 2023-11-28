@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from "react"
-import { header } from "../styles/styles"
+import { header, weatherPage } from "../styles/styles"
 import colors from '../styles/colors.json'
 import { weatherCodes } from "@/functions/weatherCodes"
 
@@ -31,7 +31,7 @@ const Weather:FC = () => {
     }, [])
 
     return (
-        <div style={header.weatherContainer as React.CSSProperties}>
+        <div style={weatherPage.weatherPageContainer as React.CSSProperties}>
             <table style={{border: '1px solid black', borderCollapse: 'collapse'}}>
                 <tr>
                     <td style={header.weatherCell as React.CSSProperties}>Type</td>

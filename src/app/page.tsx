@@ -3,6 +3,7 @@ import { globals } from './styles/styles';
 import Header from './components/header';
 import Journal from './components/journal';
 import Logs from './components/logs';
+import Weather from './components/weather';
 import { useState } from 'react';
 
 export default function Home() {
@@ -13,14 +14,18 @@ export default function Home() {
 
   return (
     <main style={globals.global}>
-      <Header />
+      <Header setPageState={setPageState} />
       {
         pageState === "Home" ? 
         <>
           <Journal setRefreshLogs={setRefreshLogs} refreshLogs={refreshLogs} />
           <Logs refreshExternal={refreshLogs} />
+        </> 
+        :  pageState === "Weather" ?
+        <>
+          <Weather />
         </>
-        :
+        : 
         <></>
       }
     </main>

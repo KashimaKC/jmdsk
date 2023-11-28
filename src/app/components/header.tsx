@@ -4,11 +4,15 @@ import Image from "next/image"
 import Clock from "./clock"
 import TodayW from "./todayw"
 import { invoke } from '@tauri-apps/api/tauri'
-import { useState, useEffect } from "react"
-import { FaCloudSun, FaHouseUser, FaSlidersH } from "react-icons/fa"
+import React, { useState, useEffect, FC } from "react"
+import { FaCloudSun, FaHouseUser, FaSlidersH, FaSatellite } from "react-icons/fa"
 import colors from "../styles/colors.json"
 
-const Header = () => {
+interface NavProps {
+    setPageState: React.Dispatch<React.SetStateAction<String>>;
+}
+
+const Header:FC<NavProps> = ( { setPageState }) => {
 
     const [image, setImage] = useState("");
 
@@ -45,18 +49,50 @@ const Header = () => {
                     >Refresh Card</Button>
                 </div>
                 <div style={header.pageNavContainer as React.CSSProperties}>
+
+                    {/* 
+                    
+                        home page button 
+                        
+                    */}
                     <Button 
                         variant="contained" 
                         sx={{width: 100, backgroundColor: colors.indigo_dye}}
+                        onClick={() => setPageState("Home")}
                     >
                         <FaHouseUser style={{fontSize: 30}} />
                     </Button>
+
+                    {/* 
+                    
+                        weather page button 
+                        
+                    */}
+                    <Button 
+                        variant="contained"
+                        sx={{width: 100, backgroundColor: colors.indigo_dye}}
+                        onClick={() => setPageState("Weather")}
+                    >
+                        <FaCloudSun style={{fontSize: 30}} />
+                    </Button>
+
+                    {/* 
+                    
+                        space page button 
+                        
+                    */}
                     <Button 
                         variant="contained"
                         sx={{width: 100, backgroundColor: colors.indigo_dye}}
                     >
-                        <FaCloudSun style={{fontSize: 30}} />
+                        <FaSatellite style={{fontSize: 30}} />
                     </Button>
+
+                    {/* 
+                    
+                        settings page button 
+                        
+                    */}
                     <Button 
                         variant="contained"
                         sx={{width: 100, backgroundColor: colors.indigo_dye}}
