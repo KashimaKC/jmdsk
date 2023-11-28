@@ -57,10 +57,13 @@ const header = {
     },
     pageNavContainer : {
         display: 'flex',
-        width: 300,
+        width: 150,
         height: 421,
         backgroundColor: colors.cerulean,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        alignItems: 'center',
+        borderRadius: 5
     }
 }
 
@@ -107,4 +110,15 @@ const logs = {
     }
 }
 
-export { header, globals, journal, logs }
+const currentWeatherStyles = {
+    weatherContainer : {
+        display: 'flex',
+        backgroundColor: colors.oxford_blue,
+        padding: 20,
+        borderRadius: 20,
+        marginTop: 20,
+        textAlign: 'middle'
+    }
+}
+
+export { header, globals, journal, logs, currentWeatherStyles }

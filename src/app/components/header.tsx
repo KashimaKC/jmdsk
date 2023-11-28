@@ -1,9 +1,12 @@
 import { header } from "../styles/styles"
-import { Button } from "@mui/material"
+import { Button, createTheme, ThemeProvider } from "@mui/material"
 import Image from "next/image"
 import Clock from "./clock"
+import TodayW from "./todayw"
 import { invoke } from '@tauri-apps/api/tauri'
 import { useState, useEffect } from "react"
+import { FaCloudSun, FaHouseUser, FaSlidersH } from "react-icons/fa"
+import colors from "../styles/colors.json"
 
 const Header = () => {
 
@@ -31,6 +34,7 @@ const Header = () => {
             </div>
             <div style={header.clockContainer as React.CSSProperties}>
                 <Clock />
+                <TodayW />
             </div>
             <div style={{display: 'flex', justifyContent: 'space-around'}}>
                 <div style={header.imageContainer as React.CSSProperties}>
@@ -41,7 +45,24 @@ const Header = () => {
                     >Refresh Card</Button>
                 </div>
                 <div style={header.pageNavContainer as React.CSSProperties}>
-                    <Button variant="contained">Weather</Button>
+                    <Button 
+                        variant="contained" 
+                        sx={{width: 100, backgroundColor: colors.indigo_dye}}
+                    >
+                        <FaHouseUser style={{fontSize: 30}} />
+                    </Button>
+                    <Button 
+                        variant="contained"
+                        sx={{width: 100, backgroundColor: colors.indigo_dye}}
+                    >
+                        <FaCloudSun style={{fontSize: 30}} />
+                    </Button>
+                    <Button 
+                        variant="contained"
+                        sx={{width: 100, backgroundColor: colors.indigo_dye}}
+                    >
+                        <FaSlidersH style={{fontSize: 30}} />
+                    </Button>
                 </div>
             </div>
         </div>
