@@ -11,7 +11,7 @@ use std::{fs, path::Path, io::Read};
 fn main() {
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![
-      connect_db, test_db_log, select_random_image, submit_log, retrieve_logs
+      connect_db, test_db_log, select_random_image, submit_log, retrieve_logs, remove_log
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
@@ -74,6 +74,18 @@ fn submit_log(journal: String, date: String, time: String) -> Result<String, Str
       Err("unable to create document".to_owned())
     }
   }
+}
+
+#[tauri::command]
+fn remove_log(date: String, time: String) -> Result<String, String> {
+  let conn = initialize_db_connection();
+  let col = conn.unwrap();
+
+  let _cursor = col.find_one_and_delete(doc! 
+    {"date": date, "time": time}, None)
+    .expect("could not remove document");
+
+  Ok("success".to_owned())
 }
 
 #[tauri::command]

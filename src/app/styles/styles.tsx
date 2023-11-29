@@ -102,13 +102,14 @@ const logs = {
         padding: 10,
         marginBottom: 6
     },
-    logCard : {
+    logCard : {  
         display: 'flex',
         backgroundColor: colors.cerulean,
         padding: 20,
-        margin: 10,
-        flexDirection: 'column',
-        borderRadius: 5
+        paddingRight: 0,
+        margin: 0,
+        borderRadius: 5,
+        filter: 'drop-shadow(0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.5))'
     }
 }
 
