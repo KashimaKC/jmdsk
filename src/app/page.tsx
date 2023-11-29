@@ -12,6 +12,7 @@ export default function Home() {
   // refresh state for updating the logs panel.
   const [refreshLogs, setRefreshLogs] = useState<boolean>(false);
   const [pageState, setPageState] = useState<String>("Home")
+  const [logView, setLogView] = useState<Object | any>()
 
   return (
     <main style={globals.global}>
@@ -24,7 +25,7 @@ export default function Home() {
         pageState === "Home" ? 
         <>
           <Journal setRefreshLogs={setRefreshLogs} refreshLogs={refreshLogs} />
-          <Logs refreshExternal={refreshLogs} setPageState={setPageState} />
+          <Logs refreshExternal={refreshLogs} setPageState={setPageState} setLogView={setLogView} />
         </>
         
         
@@ -40,8 +41,8 @@ export default function Home() {
         // page layout if viewing a log
         : pageState === "DetailView" ?
         <>
-          <LogView />
-          <Logs refreshExternal={refreshLogs} setPageState={setPageState}/>
+          <LogView log={logView} setPageState={setPageState} />
+          <Logs refreshExternal={refreshLogs} setPageState={setPageState} setLogView={setLogView}/>
         </>
         
         

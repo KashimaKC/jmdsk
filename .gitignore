@@ -37,3 +37,6 @@ next-env.d.ts
 
 # Card Data
 ./src-tauri/CardData/
+
+# secrets
+/src/.secret

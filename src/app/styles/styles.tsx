@@ -94,7 +94,8 @@ const logs = {
         margin: 10,
         padding: 10,
         borderRadius: 5,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        minWidth: '25vw'
     },
     logHeaderText : {
         color: colors.white,
@@ -107,9 +108,20 @@ const logs = {
         backgroundColor: colors.cerulean,
         padding: 20,
         paddingRight: 0,
-        margin: 0,
+        marginTop: 20,
         borderRadius: 5,
         filter: 'drop-shadow(0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.5))'
+    },
+    logViewContainer : {
+        display: 'flex',
+        backgroundColor: colors.cerulean,
+        width: '30vw',
+        margin: 10,
+        padding: 10,
+        borderRadius: 5,
+        flexDirection: 'column',
+        transition: 'opacity 0.5s',
+        opacity: 1
     }
 }
 
