@@ -1,10 +1,11 @@
 'use client';
 import { globals } from './styles/styles';
-import Header from './components/header';
-import Journal from './components/journal';
-import Logs from './components/logs';
-import Weather from './components/weather';
-import LogView from './components/logview';
+import Header from './components/panes/header';
+import Journal from './components/panes/journal';
+import Logs from './components/panes/logs';
+import Weather from './components/panes/weather';
+import LogView from './components/panes/logview';
+import Space from './components/panes/space';
 import { useState } from 'react';
 
 export default function Home() {
@@ -46,6 +47,8 @@ export default function Home() {
         </>
         
         
+        : pageState === "Space" ?
+        <Space />
         :
         <></>
       }

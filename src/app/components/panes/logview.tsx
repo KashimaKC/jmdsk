@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { logs } from "../styles/styles";
+import { logs } from "../../styles/styles";
 import { Button, Fade } from "@mui/material";
 
 interface LogViewProps {

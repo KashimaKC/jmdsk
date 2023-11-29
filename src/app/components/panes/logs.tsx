@@ -1,8 +1,8 @@
 import { useEffect, useState, FC, Ref } from "react"
-import { logs } from "../styles/styles"
+import { logs } from "../../styles/styles"
 import { invoke } from "@tauri-apps/api/tauri"
 import { Button, Fade } from "@mui/material"
-import styles from "../styles/scroll.module.css"
+import styles from "../../styles/scroll.module.css"
 import { FaTrash, FaExpand } from "react-icons/fa"
 
 interface LogProps {

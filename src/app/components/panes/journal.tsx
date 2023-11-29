@@ -1,4 +1,4 @@
-import { journal } from "../styles/styles"
+import { journal } from "../../styles/styles"
 import { TextField, Button, Fade } from "@mui/material"
 import { invoke } from "@tauri-apps/api/tauri";
 import { useState, FC } from "react"

@@ -1,6 +1,6 @@
 import { FC, useCallback, useEffect, useState } from "react"
-import { header, weatherPage } from "../styles/styles"
-import colors from '../styles/colors.json'
+import { header, weatherPage } from "../../styles/styles"
+import colors from '../../styles/colors.json'
 import { weatherCodes } from "@/functions/weatherCodes"
 
 interface WeatherResponse {

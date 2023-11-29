@@ -1,12 +1,12 @@
-import { header } from "../styles/styles"
+import { header } from "../../styles/styles"
 import { Button, createTheme, ThemeProvider } from "@mui/material"
 import Image from "next/image"
-import Clock from "./clock"
-import TodayW from "./todayw"
+import Clock from "../clock"
+import TodayW from "../todayw"
 import { invoke } from '@tauri-apps/api/tauri'
 import React, { useState, useEffect, FC } from "react"
 import { FaCloudSun, FaHouseUser, FaSlidersH, FaSatellite } from "react-icons/fa"
-import colors from "../styles/colors.json"
+import colors from "../../styles/colors.json"
 
 interface NavProps {
     setPageState: React.Dispatch<React.SetStateAction<String>>;
@@ -82,6 +82,7 @@ const Header:FC<NavProps> = ( { setPageState }) => {
                         
                     */}
                     <Button 
+                        onClick={() => setPageState("Space")}
                         variant="contained"
                         sx={{width: 100, backgroundColor: colors.indigo_dye}}
                     >
