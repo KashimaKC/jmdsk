@@ -31,7 +31,7 @@ const Journal:FC<RefreshProps> = ( {setRefreshLogs, refreshLogs} ) => {
     }
 
     return (
-        <Fade in timeout={800}>
+        <Fade in timeout={500}>
             <div style={journal.journalContainer as React.CSSProperties}>
                     <div style={journal.journalHeaderText}>Create New Journal Entry</div>
                     <TextField

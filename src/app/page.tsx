@@ -6,6 +6,7 @@ import Logs from './components/panes/logs';
 import Weather from './components/panes/weather';
 import LogView from './components/panes/logview';
 import Space from './components/panes/space';
+import TodoList from './components/panes/todolist';
 import { useState } from 'react';
 
 export default function Home() {
@@ -46,7 +47,15 @@ export default function Home() {
           <Logs refreshExternal={refreshLogs} setPageState={setPageState} setLogView={setLogView}/>
         </>
         
+
+
+        // page layout if viewing the todo list
+        : pageState === "TodoList" ?
+        <TodoList />
         
+
+        
+        // page layout if viewing the space tab
         : pageState === "Space" ?
         <Space />
         :

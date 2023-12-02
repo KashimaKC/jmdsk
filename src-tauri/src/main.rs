@@ -11,7 +11,8 @@ use std::{fs, path::Path, io::Read};
 fn main() {
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![
-      connect_db, test_db_log, select_random_image, submit_log, retrieve_logs, remove_log
+      connect_db, test_db_log, select_random_image, submit_log, retrieve_logs, remove_log,
+      retrieve_todo, modify_todo_status
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
@@ -27,6 +28,15 @@ fn initialize_db_connection() -> Result<mongodb::sync::Collection<mongodb::bson:
   Ok(my_coll)
 }
 
+// initializes the database connection with the todo collection.
+fn initialize_db_connection_todo() -> Result<mongodb::sync::Collection<mongodb::bson::Document>, String> {
+  let uri: &str = "mongodb://localhost:27017";
+  let client: Client = Client::with_uri_str(uri).map_err(|e| e.to_string())?;
+  let database: mongodb::sync::Database = client.database("jmdb");
+  let my_coll: Collection<Document> = database.collection("todo");
+
+  Ok(my_coll)
+}
 
 #[tauri::command]
 fn connect_db() -> Result<String, String> {
@@ -103,6 +113,8 @@ fn retrieve_logs() -> Result<String, String> {
 
 #[tauri::command]
 fn select_random_image() -> String {
+
+  
   let mut rng = rand::thread_rng();
 
   let top_dir = fs::read_dir("./CardData/").unwrap(); // read the top directory
@@ -126,4 +138,25 @@ fn select_random_image() -> String {
   } else {
     return "failed".into()
   }
+}
+
+#[tauri::command]
+fn retrieve_todo() -> Result<String, String> {
+  let conn: Result<Collection<Document>, String> = initialize_db_connection_todo();
+  let col: Collection<Document> = conn.unwrap();
+
+  let cursor = col.find(doc! {}, None).expect("failed to run query");
+
+  let documents: Result<Vec<Document>, mongodb::error::Error> = cursor.collect::<Result<Vec<_>, _>>();
+  let json: Result<String, serde_json::Error> = serde_json::to_string(&documents.unwrap());
+
+  Ok(json.unwrap())
+}
+
+#[tauri::command]
+fn modify_todo_status(new_type: String) {
+  let conn = initialize_db_connection_todo();
+  let col = conn.unwrap();
+
+  let _result = col.update_one(doc! {"task": "first task"}, doc! {"$set": {"type": "complete"}}, None);
 }

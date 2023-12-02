@@ -148,7 +148,34 @@ const weatherPage = {
     }
 }
 
+const todo = {
+    todoContainer : {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+    },
+    todoSection : ( type: string ) => ({
+        backgroundColor: colors.cerulean,
+        width: type === 'half' ? '26vw' : '55vw',
+        margin: 10,
+        padding: 10,
+        borderRadius: 5,
+        height: '45vh'
+    }),
+    todoHeader : {
+        backgroundColor: colors.penn_blue,
+        color: 'white',
+        padding: 10,
+        borderRadius: 5,
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        filter: 'drop-shadow(0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.5))'
+    }
+}
+
 export { 
     header, globals, journal, 
-    logs, currentWeatherStyles, weatherPage 
+    logs, currentWeatherStyles, weatherPage,
+    todo
 }

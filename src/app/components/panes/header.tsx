@@ -5,7 +5,7 @@ import Clock from "../clock"
 import TodayW from "../todayw"
 import { invoke } from '@tauri-apps/api/tauri'
 import React, { useState, useEffect, FC } from "react"
-import { FaCloudSun, FaHouseUser, FaSlidersH, FaSatellite } from "react-icons/fa"
+import { FaCloudSun, FaHouseUser, FaSlidersH, FaSatellite, FaListOl } from "react-icons/fa"
 import colors from "../../styles/colors.json"
 
 interface NavProps {
@@ -74,6 +74,19 @@ const Header:FC<NavProps> = ( { setPageState }) => {
                         onClick={() => setPageState("Weather")}
                     >
                         <FaCloudSun style={{fontSize: 30}} />
+                    </Button>
+
+                    {/* 
+                    
+                        todo list page button 
+                        
+                    */}
+                    <Button 
+                        variant="contained"
+                        sx={{width: 100, backgroundColor: colors.indigo_dye}}
+                        onClick={() => setPageState("TodoList")}
+                    >
+                        <FaListOl style={{fontSize: 30}} />
                     </Button>
 
                     {/* 
