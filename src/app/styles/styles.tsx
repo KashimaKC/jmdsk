@@ -155,12 +155,13 @@ const todo = {
         justifyContent: 'space-between'
     },
     todoSection : ( type: string ) => ({
-        backgroundColor: colors.cerulean,
-        width: type === 'half' ? '26vw' : '55vw',
+        backgroundColor: type === 'three' ? colors.indigo_dye : colors.cerulean,
+        width: type === 'half' ? '26vw' : type === 'three' ? '17vw' : '35vw',
         margin: 10,
         padding: 10,
         borderRadius: 5,
-        height: '45vh'
+        height: '45vh',
+        overflowY: type === 'three' ? 'initial' : 'scroll'
     }),
     todoHeader : {
         backgroundColor: colors.penn_blue,
@@ -170,7 +171,27 @@ const todo = {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        filter: 'drop-shadow(0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.5))',
+    },
+    todoCard : (small: boolean) => ({
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundColor: colors.oxford_blue,
+        color: 'white',
+        padding: 10,
+        margin: 10,
+        borderRadius: 10,
+        width: small ? '23.2vw' : '35vw',
         filter: 'drop-shadow(0.1rem 0.1rem 0.3rem rgba(0, 0, 0, 0.5))'
+    }),
+    inputField : {
+        display: 'flex',
+        flexDirection: 'column',
+        height: '40vh',
+        marginTop: 10
+    },
+    itemContainer : {
+        display: 'flex',
     }
 }
 

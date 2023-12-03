@@ -12,7 +12,7 @@ fn main() {
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![
       connect_db, test_db_log, select_random_image, submit_log, retrieve_logs, remove_log,
-      retrieve_todo, modify_todo_status
+      retrieve_todo, modify_todo_status, create_task, remove_task
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
@@ -154,9 +154,48 @@ fn retrieve_todo() -> Result<String, String> {
 }
 
 #[tauri::command]
-fn modify_todo_status(new_type: String) {
+fn modify_todo_status(new_type: String, date: String, time: String) -> Result<String, String> {
   let conn = initialize_db_connection_todo();
   let col = conn.unwrap();
 
-  let _result = col.update_one(doc! {"task": "first task"}, doc! {"$set": {"type": "complete"}}, None);
+  let _result = col.update_one(doc! {"date": date, "time": time}, doc! {"$set": {"type": new_type}}, None).expect("failed");
+
+  Ok("success".to_owned())
+}
+
+#[tauri::command]
+fn create_task(
+  new_type: String, 
+  task: String, 
+  time: String, 
+  date: String,
+  priority: String) -> Result<String, String> {
+
+  let conn: Result<Collection<Document>, String> = initialize_db_connection_todo();
+  let col: Collection<Document> = conn.unwrap();
+  let insert_res: Result<mongodb::results::InsertOneResult, mongodb::error::Error> = col.insert_one(doc! {
+    "time": time,
+    "date": date,
+    "type": new_type,
+    "task": task,
+    "priority": priority
+  }, None);
+
+  match insert_res {
+    Ok(_) => {
+      Ok("success".to_owned())
+    },
+    Err(_e) => {
+      Err("unable to create document".to_owned())
+    }
+  }
+}
+
+#[tauri::command]
+fn remove_task(time: String, date:String) -> Result<String, String> {
+  let conn = initialize_db_connection_todo();
+  let col = conn.unwrap();
+  let _result = col.find_one_and_delete(doc! {"time": time, "date": date}, None).expect("could not remove document");
+
+  Ok("success".to_owned())
 }
