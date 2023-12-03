@@ -144,6 +144,10 @@ const TodoList:FC = () => {
                                     variant="contained"
                                     onClick={() => clearFields()}
                                     style={{width: 130}}
+                                    sx={{
+                                        backgroundColor: 'orange',
+                                        color: 'black'
+                                    }}
                                 >Clear</Button>
                                 <Button
                                     variant="contained"

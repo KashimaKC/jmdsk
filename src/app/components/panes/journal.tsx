@@ -47,7 +47,7 @@ const Journal:FC<RefreshProps> = ( {setRefreshLogs, refreshLogs} ) => {
                     <Button
                         variant="contained"
                         onClick={submitJournal}
-                        style={{marginTop: 10}}
+                        style={{marginTop: 'auto'}}
                     >Submit</Button>
                     <Button
                         variant="contained"

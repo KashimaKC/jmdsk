@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { todo } from "../styles/styles";
-import { Button } from "@mui/material";
+import { Button, Tooltip } from "@mui/material";
 import { FaChevronUp, FaChevronDown, FaEraser } from "react-icons/fa";
 import { invoke } from "@tauri-apps/api/tauri";
 
@@ -69,26 +69,32 @@ const TodoItem:FC<ItemProps> = ({ item, setRefresh, refresh, small }) => {
         <div style={todo.todoCard(isSmall) as React.CSSProperties}>
             <div style={{display: 'flex', alignItems: 'center'}}>
                 {item.task}
-                <Button
-                    variant="contained"
-                    style={{marginLeft: 'auto', marginRight: 10}}
-                    onClick={() => raiseStatus(item.type, item.time, item.date)}
-                >
-                    <FaChevronUp />
-                </Button>
-                <Button
-                    variant="contained"
-                    style={{marginRight: 10}}
-                    onClick={() => lowerStatus(item.type, item.time, item.date)}
-                >
-                    <FaChevronDown />
-                </Button>
-                <Button
-                    variant="contained"
-                    onClick={() => removeTask(item.time, item.date)}
-                >
-                    <FaEraser />
-                </Button>
+                <Tooltip title="Raise Status" placement="top">
+                    <Button
+                        variant="contained"
+                        style={{marginLeft: 'auto', marginRight: 10}}
+                        onClick={() => raiseStatus(item.type, item.time, item.date)}
+                    >
+                        <FaChevronUp />
+                    </Button>
+                </Tooltip>
+                <Tooltip title="Lower Status" placement="top">
+                    <Button
+                        variant="contained"
+                        style={{marginRight: 10}}
+                        onClick={() => lowerStatus(item.type, item.time, item.date)}
+                    >
+                        <FaChevronDown />
+                    </Button>
+                </Tooltip>
+                <Tooltip title="Remove Task" placement="top">
+                    <Button
+                        variant="contained"
+                        onClick={() => removeTask(item.time, item.date)}
+                    >
+                        <FaEraser />
+                    </Button>
+                </Tooltip>
             </div>
             <hr style={{
                 width: isSmall ? '23.2vw' : '32.5vw', 
