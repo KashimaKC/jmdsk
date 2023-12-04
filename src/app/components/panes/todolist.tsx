@@ -139,7 +139,7 @@ const TodoList:FC = () => {
                                 </Button>
                             </div>
                             {/* ------------------------------ */}
-                            <div style={{display: 'flex', justifyContent: 'space-around', marginTop: 'auto'}}>
+                            <div style={{display: 'flex', justifyContent: 'space-around', marginTop: 'auto', marginBottom: 5}}>
                                 <Button
                                     variant="contained"
                                     onClick={() => clearFields()}

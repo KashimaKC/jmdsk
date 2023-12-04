@@ -60,7 +60,8 @@
         "height": 900,
         "resizable": false,
         "title": "jmdsk",
-        "width": 1600
+        "width": 1600,
+        "decorations": false
       }
     ]
   }

@@ -5,7 +5,7 @@ const globals = {
         backgroundColor: colors.oxford_blue,
         minHeight: '100vh',
         display: 'flex',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
     }
 }
 
@@ -19,7 +19,8 @@ const header = {
         borderRadius: 5,
         flexDirection: 'column',
         minWidth: '40vw',
-        maxWidth: '40vw'
+        maxWidth: '40vw',
+        marginTop: 20
     },
     headerText : {
         color: colors.white,
@@ -77,7 +78,8 @@ const journal = {
         margin: 10,
         padding: 10,
         borderRadius: 5,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        marginTop: 20
     },
     journalHeaderText : {
         color: colors.white,
@@ -95,7 +97,8 @@ const logs = {
         padding: 10,
         borderRadius: 5,
         flexDirection: 'column',
-        minWidth: '25vw'
+        minWidth: '25vw',
+        marginTop: 20
     },
     logHeaderText : {
         color: colors.white,
@@ -144,7 +147,8 @@ const weatherPage = {
         margin: 10,
         padding: 10,
         borderRadius: 5,
-        flexDirection: 'column'
+        flexDirection: 'column',
+        marginTop: 20
     }
 }
 
@@ -161,7 +165,8 @@ const todo = {
         padding: 10,
         borderRadius: 5,
         height: '45vh',
-        overflowY: type === 'three' ? 'initial' : 'scroll'
+        overflowY: type === 'three' ? 'initial' : 'scroll',
+        marginTop: type === 'full' ? 20 : type === 'three' ? 20 : 10
     }),
     todoHeader : {
         backgroundColor: colors.penn_blue,

@@ -4,6 +4,8 @@ import { invoke } from "@tauri-apps/api/tauri"
 import { Button, Fade } from "@mui/material"
 import styles from "../../styles/scroll.module.css"
 import { FaTrash, FaExpand } from "react-icons/fa"
+import { darkenButton } from "@/functions/darkenButton"
+import { lightenButton } from "@/functions/lightenButton"
 
 interface LogProps {
     refreshExternal: boolean;
@@ -38,16 +40,6 @@ const Logs:FC<LogProps> = ( { refreshExternal, setPageState, setLogView } ) => {
     const openDetailView = (log: any) => {
         setLogView(log)
         setPageState("DetailView")
-    }
-
-    const darkenButton = (e: React.MouseEvent, color: string): void => {
-        const target = e.target as HTMLButtonElement;
-        if (target) target.style.backgroundColor = color
-    }
-
-    const lightenButton = (e: React.MouseEvent, color: string): void => {
-        const target = e.target as HTMLButtonElement;
-        if (target) target.style.backgroundColor = color
     }
 
     return (
