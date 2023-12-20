@@ -200,8 +200,21 @@ const todo = {
     }
 }
 
+const space = {
+    spaceContainer : {
+        display: 'flex',
+        backgroundColor: colors.indigo_dye,
+        width: '55vw',
+        margin: 10,
+        padding: 10,
+        borderRadius: 5,
+        flexDirection: 'column',
+        marginTop: 20
+    }
+}
+
 export { 
     header, globals, journal, 
     logs, currentWeatherStyles, weatherPage,
-    todo
+    todo, space
 }

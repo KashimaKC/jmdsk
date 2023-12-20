@@ -108,6 +108,7 @@ const Header:FC<NavProps> = ( { setPageState }) => {
                         
                     */}
                     <Button 
+                        onClick={() => setPageState("Settings")}
                         variant="contained"
                         sx={{width: 100, backgroundColor: colors.indigo_dye}}
                     >
