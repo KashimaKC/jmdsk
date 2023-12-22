@@ -15,7 +15,7 @@ const header = {
         backgroundColor: colors.indigo_dye,
         width: '40vw',
         margin: 10,
-        padding: 10,
+        padding: 5,
         borderRadius: 5,
         flexDirection: 'column',
         minWidth: '40vw',
@@ -79,7 +79,9 @@ const journal = {
         padding: 10,
         borderRadius: 5,
         flexDirection: 'column',
-        marginTop: 20
+        marginTop: 20,
+        marginLeft: 2,
+        marginRight: 2
     },
     journalHeaderText : {
         color: colors.white,
@@ -92,13 +94,13 @@ const logs = {
     logsContainer : {
         display: 'flex',
         backgroundColor: colors.indigo_dye,
-        width: '25vw',
+        width: '35vw',
         margin: 10,
         padding: 10,
         borderRadius: 5,
         flexDirection: 'column',
         minWidth: '25vw',
-        marginTop: 20
+        marginTop: 20,
     },
     logHeaderText : {
         color: colors.white,
