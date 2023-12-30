@@ -1,0 +1,15 @@
+@keyframes slide {
+    0% {
+        opacity: 100;
+        margin-left: 110%;
+    }
+    100% {
+        margin-left: -10%;
+    }
+}
+
+.slide {
+    opacity: 0;
+    white-space: nowrap;
+    animation: slide 8s ease-in-out infinite;
+}

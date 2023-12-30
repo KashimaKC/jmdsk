@@ -127,6 +127,33 @@ const logs = {
         flexDirection: 'column',
         transition: 'opacity 0.5s',
         opacity: 1
+    },
+    logDateSeparator : {
+        backgroundColor: colors.oxford_blue,
+        marginTop: 20,
+        padding: 10,
+        color: 'white',
+        borderRadius: 5,
+        marginRight: 5,
+        paddingRight: 30
+    },
+    separatorContainer : {
+        display: 'flex'
+    },
+    dateGraphic : {
+        backgroundColor: colors.oxford_blue,
+        marginTop: 20,
+        padding: 10,
+        borderRadius: 5,
+        flexGrow: 1,
+        marginLeft: 5,
+        overflow: 'hidden',
+        display: 'flex',
+        flexDirection: 'column',
+        backgroundImage: 'url("/wavesNegative-02.svg")',
+        backgroundPosition: '0% 0%',
+        backgroundSize: '100% 100%',
+        backgroundRepeat: 'no-repeat',
     }
 }
 

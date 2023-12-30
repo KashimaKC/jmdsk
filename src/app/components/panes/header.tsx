@@ -46,7 +46,7 @@ const Header:FC<NavProps> = ( { setPageState }) => {
                     <Button
                         variant="contained"
                         onClick={randomImage}
-                    >Refresh Card</Button>
+                    >カードリフレッシュ</Button>
                 </div>
                 <div style={header.pageNavContainer as React.CSSProperties}>
 
@@ -72,6 +72,7 @@ const Header:FC<NavProps> = ( { setPageState }) => {
                         variant="contained"
                         sx={{width: 100, backgroundColor: colors.indigo_dye}}
                         onClick={() => setPageState("Weather")}
+                        disabled
                     >
                         <FaCloudSun style={{fontSize: 30}} />
                     </Button>
@@ -98,6 +99,7 @@ const Header:FC<NavProps> = ( { setPageState }) => {
                         onClick={() => setPageState("Space")}
                         variant="contained"
                         sx={{width: 100, backgroundColor: colors.indigo_dye}}
+                        disabled
                     >
                         <FaSatellite style={{fontSize: 30}} />
                     </Button>
@@ -111,6 +113,7 @@ const Header:FC<NavProps> = ( { setPageState }) => {
                         onClick={() => setPageState("Settings")}
                         variant="contained"
                         sx={{width: 100, backgroundColor: colors.indigo_dye}}
+                        disabled
                     >
                         <FaSlidersH style={{fontSize: 30}} />
                     </Button>

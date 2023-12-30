@@ -178,7 +178,7 @@ const TodoList:FC = () => {
                         <div style={todo.todoHeader}>Completed</div>
 
                         {
-                            completeData.map((item: any, i) => (
+                            completeData?.toReversed().map((item: any, i) => (
                                 <TodoItem key={i} item={item} setRefresh={setRefresh} refresh={refresh} small />
                             ))
                         }

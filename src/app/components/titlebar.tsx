@@ -33,6 +33,7 @@ const Titlebar:FC = () => {
                 userSelect: 'none',
                 display: 'flex',
                 height: 15,
+                padding: 1
             }}>
                 <Image 
                     src="/watanabe-you-icon.png" 
@@ -53,6 +54,7 @@ const Titlebar:FC = () => {
                             pointerEvents: 'none', 
                             marginRight: 2,
                             marginLeft: 2,
+                            padding: 1
                         }}
                     />
                 </div>
@@ -67,7 +69,8 @@ const Titlebar:FC = () => {
                             color: 'black', 
                             marginRight: 2, 
                             marginLeft: 2, 
-                            pointerEvents: 'none' 
+                            pointerEvents: 'none',
+                            padding: 1
                         }}
                     />
                 </div>

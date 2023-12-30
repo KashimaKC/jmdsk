@@ -16,8 +16,11 @@ const Clock = () => {
     }, [])
 
     return(
-        <div style={{alignSelf: 'center'}}>
-            {isClient ? time.toLocaleTimeString() : ''}
+        <div style={{alignSelf: 'center', textAlign: 'center'}}>
+            {isClient ? time.toLocaleTimeString() : ''} <br />
+            {isClient ? time.getFullYear() : ''}年
+            {isClient ? time.getMonth() + 1 : ''}月
+            {isClient ? time.getDate() : ''}日
         </div>
     )
 }
