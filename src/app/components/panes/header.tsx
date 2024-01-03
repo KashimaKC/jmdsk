@@ -3,6 +3,7 @@ import { Button, createTheme, ThemeProvider } from "@mui/material"
 import Image from "next/image"
 import Clock from "../clock"
 import TodayW from "../todayw"
+import Banner from "../banner"
 import { invoke } from '@tauri-apps/api/tauri'
 import React, { useState, useEffect, FC } from "react"
 import { FaCloudSun, FaHouseUser, FaSlidersH, FaSatellite, FaListOl } from "react-icons/fa"
@@ -39,6 +40,7 @@ const Header:FC<NavProps> = ( { setPageState }) => {
             <div style={header.clockContainer as React.CSSProperties}>
                 <Clock />
                 <TodayW />
+                <Banner />
             </div>
             <div style={{display: 'flex', justifyContent: 'space-around'}}>
                 <div style={header.imageContainer as React.CSSProperties}>
@@ -88,6 +90,20 @@ const Header:FC<NavProps> = ( { setPageState }) => {
                         onClick={() => setPageState("TodoList")}
                     >
                         <FaListOl style={{fontSize: 30}} />
+                    </Button>
+
+                    {/*
+
+                        vocabulary button
+
+                    */}
+
+                    <Button 
+                        variant="contained"
+                        sx={{width: 100, backgroundColor: colors.indigo_dye}}
+                        onClick={() => setPageState("Vocab")}
+                    >
+                        <div style={{fontSize: 18}}>語彙</div>
                     </Button>
 
                     {/* 

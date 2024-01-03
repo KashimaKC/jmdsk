@@ -1,0 +1,16 @@
+@keyframes slide {
+    0% {
+        opacity: 100;
+        left: 520px;
+    }
+    100% {  
+        left: -200px;
+    }
+}
+
+.slide {
+    left: 600px;
+    opacity: 0;
+    white-space: nowrap;
+    animation: slide 12s linear infinite;
+}

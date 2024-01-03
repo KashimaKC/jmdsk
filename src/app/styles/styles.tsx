@@ -126,7 +126,9 @@ const logs = {
         borderRadius: 5,
         flexDirection: 'column',
         transition: 'opacity 0.5s',
-        opacity: 1
+        opacity: 1,
+        marginLeft: 2,
+        marginRight: 2
     },
     logDateSeparator : {
         backgroundColor: colors.oxford_blue,
@@ -242,8 +244,46 @@ const space = {
     }
 }
 
+const banner = {
+    bannerContainer : {
+        backgroundColor: colors.oxford_blue,
+        marginTop: 10,
+        padding: 5,
+        overflow: 'hidden',
+        borderRadius: 5
+    },
+    bannerItem : {
+
+    }
+}
+
+const vocab = {
+    vocabContainer : {
+        display: 'flex',
+        backgroundColor: colors.cerulean,
+        margin: 10, 
+        padding: 10,
+        width: '60vw',
+        marginTop: 20,
+        borderRadius: 5,
+        flexDirection: 'column'
+    },
+    entryContainer : {
+        backgroundColor: colors.penn_blue,
+        padding: 5,
+        borderRadius: 5,
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap'
+    },
+    entryField : ( basis: string ) => ({
+        flexBasis: basis,
+        margin: 5
+    })
+}
+
 export { 
     header, globals, journal, 
     logs, currentWeatherStyles, weatherPage,
-    todo, space
+    todo, space, banner, vocab
 }

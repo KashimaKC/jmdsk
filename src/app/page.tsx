@@ -9,6 +9,7 @@ import Space from './components/panes/space';
 import TodoList from './components/panes/todolist';
 import Settings from './components/panes/settings';
 import { useState } from 'react';
+import Vocab from './components/panes/vocab';
 
 export default function Home() {
 
@@ -60,7 +61,9 @@ export default function Home() {
         : pageState === "Space" ?
         <Space />
 
-
+        // vocabulary layout
+        : pageState === "Vocab" ?
+        <Vocab />
 
         // page layout if viewing the settings page
         : pageState === "Settings" ?
