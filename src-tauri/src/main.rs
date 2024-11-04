@@ -12,13 +12,18 @@ fn main() {
   tauri::Builder::default()
     .invoke_handler(tauri::generate_handler![
       connect_db, test_db_log, select_random_image, submit_log, retrieve_logs, remove_log,
-      retrieve_todo, modify_todo_status, create_task, remove_task
+      retrieve_todo, modify_todo_status, create_task, remove_task, create_vocab, retrieve_vocab, remove_vocab
     ])
     .run(tauri::generate_context!())
     .expect("error while running tauri application");
 }
 
-// initializes the database connection and returns the collection if successful.
+// ----------------------------------------------------------------------------------------- //
+// connections //
+
+
+
+    // initializes the database connection and returns the collection if successful.
 fn initialize_db_connection() -> Result<mongodb::sync::Collection<mongodb::bson::Document>, String> {
   let uri: &str = "mongodb://localhost:27017";
   let client: Client = Client::with_uri_str(uri).map_err(|e| e.to_string())?;
@@ -28,12 +33,22 @@ fn initialize_db_connection() -> Result<mongodb::sync::Collection<mongodb::bson:
   Ok(my_coll)
 }
 
-// initializes the database connection with the todo collection.
+    // initializes the database connection with the todo collection.
 fn initialize_db_connection_todo() -> Result<mongodb::sync::Collection<mongodb::bson::Document>, String> {
   let uri: &str = "mongodb://localhost:27017";
   let client: Client = Client::with_uri_str(uri).map_err(|e| e.to_string())?;
   let database: mongodb::sync::Database = client.database("jmdb");
   let my_coll: Collection<Document> = database.collection("todo");
+
+  Ok(my_coll)
+}
+
+    // initializes the database connection with the vocabulary collection.
+fn initialize_db_connection_vocab() -> Result<mongodb::sync::Collection<mongodb::bson::Document>, String> {
+  let uri: &str = "mongodb://localhost:27017";
+  let client: Client = Client::with_uri_str(uri).map_err(|e| e.to_string())?;
+  let database: mongodb::sync::Database = client.database("jmdb");
+  let my_coll: Collection<Document> = database.collection("vocabulary");
 
   Ok(my_coll)
 }
@@ -68,6 +83,15 @@ fn test_db_log() -> Result<String, String> {
       }
     } 
 }
+
+
+
+
+// ----------------------------------------------------------------------------------------- //
+// logs //
+
+
+
 
 #[tauri::command]
 fn submit_log(journal: String, date: String, time: String) -> Result<String, String> {
@@ -111,6 +135,15 @@ fn retrieve_logs() -> Result<String, String> {
   Ok(json.unwrap())
 }
 
+
+
+
+// ----------------------------------------------------------------------------------------- //
+// image processing //
+
+
+
+
 #[tauri::command]
 fn select_random_image() -> String {
 
@@ -139,6 +172,15 @@ fn select_random_image() -> String {
     return "failed".into()
   }
 }
+
+
+
+
+// ----------------------------------------------------------------------------------------- //
+// todo list //
+
+
+
 
 #[tauri::command]
 fn retrieve_todo() -> Result<String, String> {
@@ -194,6 +236,59 @@ fn create_task(
 #[tauri::command]
 fn remove_task(time: String, date:String) -> Result<String, String> {
   let conn = initialize_db_connection_todo();
+  let col = conn.unwrap();
+  let _result = col.find_one_and_delete(doc! {"time": time, "date": date}, None).expect("could not remove document");
+
+  Ok("success".to_owned())
+}
+
+
+// ----------------------------------------------------------------------------------------- //
+
+#[tauri::command]
+fn retrieve_vocab() -> Result<String, String> {
+  let conn = initialize_db_connection_vocab();
+  let col = conn.unwrap();
+
+  let cursor = col.find(doc! {}, None).expect("failed to run query");
+
+  let documents: Result<Vec<Document>, mongodb::error::Error> = cursor.collect::<Result<Vec<_>, _>>();
+  let json: Result<String, serde_json::Error> = serde_json::to_string(&documents.unwrap());
+
+  Ok(json.unwrap())
+}
+
+#[tauri::command]
+fn create_vocab(
+  date: String,
+  time: String,
+  word: String,
+  definition: String,
+  sentence: String
+) -> Result<String, String> {
+  let conn = initialize_db_connection_vocab();
+  let col = conn.unwrap();
+  let insert_res = col.insert_one(doc! {
+    "date": date,
+    "time": time,
+    "word": word,
+    "definition": definition,
+    "sentence": sentence
+  }, None);
+
+  match insert_res {
+    Ok(_) => {
+      Ok("success".to_owned())
+    },
+    Err(_e) => {
+      Err("unable to create document".to_owned())
+    }
+  }
+}
+
+#[tauri::command]
+fn remove_vocab(time: String, date: String) -> Result<String, String>{
+  let conn = initialize_db_connection_vocab();
   let col = conn.unwrap();
   let _result = col.find_one_and_delete(doc! {"time": time, "date": date}, None).expect("could not remove document");
 

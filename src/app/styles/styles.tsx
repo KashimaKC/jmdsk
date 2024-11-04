@@ -20,7 +20,8 @@ const header = {
         flexDirection: 'column',
         minWidth: '40vw',
         maxWidth: '40vw',
-        marginTop: 20
+        marginTop: 20,
+        backgroundImage: `linear-gradient(to bottom, ${colors.indigo_dye}, #03194a)`
     },
     headerText : {
         color: colors.white,
@@ -279,7 +280,26 @@ const vocab = {
     entryField : ( basis: string ) => ({
         flexBasis: basis,
         margin: 5
-    })
+    }),
+    cardContainer : {
+        backgroundColor: colors.oxford_blue,
+        padding: 10,
+        margin: 5,
+        borderRadius: 3,
+        color: 'white',
+        display: 'flex',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        alignItems: 'center'
+    },
+    categorySelector : {
+        backgroundColor: colors.penn_blue,
+        height: 40,
+        marginTop: 10,
+        borderRadius: 5,
+        display: 'flex',
+        alignItems: 'center'
+    }
 }
 
 export { 
